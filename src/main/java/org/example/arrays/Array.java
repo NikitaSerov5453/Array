@@ -15,7 +15,7 @@ public class Array<T extends Number> {
     }
 
     public void resizeArray(Array<T>[] oldArray) {
-        Array<T>[] newArray = Arrays.copyOf(oldArray, oldArray.length + 1);
+        Array<T>[] newArray = Arrays.copyOf(oldArray, oldArray.length + 10);
         oldArray = null;
     }
 
@@ -33,21 +33,21 @@ public class Array<T extends Number> {
         }
     }
 
-    public T maxNumber(T[] array, Comparator<T> comparator) {
-        T max = array[0];
-        for (int i = 1; i < array.length; i++) {
-            if (comparator.compare(max, array[i]) < 0) {
-                max = array[i];
+    public T maxNumber(Comparator<T> comparator) {
+        T max = arrays[0];
+        for (int i = 1; i < arrays.length; i++) {
+            if (comparator.compare(max, arrays[i]) < 0) {
+                max = arrays[i];
             }
         }
         return max;
     }
 
-    public T minNumber(T[] array, Comparator<T> comparator) {
-        T min = array[0];
-        for (int i = 1; i < array.length; i++) {
-            if (comparator.compare(min, array[i]) > 0) {
-                min = array[i];
+    public T minNumber(Comparator<T> comparator) {
+        T min = arrays[0];
+        for (int i = 1; i < arrays.length; i++) {
+            if (comparator.compare(min, arrays[i]) > 0) {
+                min = arrays[i];
             }
         }
         return min;
@@ -61,7 +61,7 @@ public class Array<T extends Number> {
         return sum / array.length;
     }
 
-    public T[] arraySort(T[] arrays) {
+    public T[] arraySort(Comparator comparator) {
         Arrays.sort(arrays);
         return arrays;
     }
@@ -76,7 +76,7 @@ public class Array<T extends Number> {
         return Arrays.binarySearch(arrays, search);
     }
 
-    public void replacingValue(T[] arrays, T search, T replacing) {
+    public void replacingValue(T search, T replacing) {
         for (int i = 0; i < arrays.length; i++) {
             if (arrays[i].equals(search)) {
                 arrays[i] = replacing;
